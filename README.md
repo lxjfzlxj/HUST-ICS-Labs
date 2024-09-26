@@ -2,7 +2,4 @@
 更新中……
 
 目前已完成：
-- 无
-
-正在实现：
-- Lab 1
+- [Lab 1](https://github.com/lxjfzlxj/HUST-ICS-Labs/tree/main/lab1)
