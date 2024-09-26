@@ -92,7 +92,7 @@ int restore_student(char *buf, int len, student *s) {
 }
 
 int main() {
-    char buf[1000];
+    char message[1000];
     // freopen("task1data.txt", "r", stdin);
     for(int i = 0; i < N; i++) {
         scanf("%s%hd%f%s", old_s[i].name, &old_s[i].age, &old_s[i].score, old_s[i].remark);
@@ -101,9 +101,12 @@ int main() {
     for(int i = 0; i < N; i++) {
         printf("name: %s\t\tage: %hd\t\tscore: %f\t\tremark:%s\n", old_s[i].name, old_s[i].age, old_s[i].score, old_s[i].remark);
     }
-    int buflen1 = pack_student_bytebybyte(old_s, 2, buf);
-    int buflen2 = pack_student_whole(old_s + 2, 3, buf + buflen1);
-    int stunum = restore_student(buf, buflen1 + buflen2, new_s);
+    int len1 = pack_student_bytebybyte(old_s, 2, message);
+    int len2 = pack_student_whole(old_s + 2, 3, message + len1);
+    puts("message first 20th:");
+    for(int i = 0; i < 20; i++) printf("%02X ", message[i]);
+    puts("");
+    int stunum = restore_student(message, len1 + len2, new_s);
     printf("new_s:\n");
     for(int i = 0; i < stunum; i++) {
         printf("name: %s\t\tage: %hd\t\tscore: %f\t\tremark:%s\n", new_s[i].name, new_s[i].age, new_s[i].score, new_s[i].remark);
